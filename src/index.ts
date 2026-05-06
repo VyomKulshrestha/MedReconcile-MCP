@@ -28,13 +28,17 @@ function createMcpServer(): McpServer {
       capabilities: { 
         tools: {},
         experimental: {
-          "ai.promptopinion/fhir-context": { supported: true },
-          "promptOpinion": { fhir: true },
-          "fhir_context_required": { supported: true },
-          "fhir": {}
+          "ai.promptopinion/fhir-context": {
+            scopes: [{ name: "patient/*", required: false }]
+          }
+        },
+        extensions: {
+          "ai.promptopinion/fhir-context": {
+            scopes: [{ name: "patient/*", required: false }]
+          }
         }
       } 
-    },
+    } as any,
   );
   const dp = new DataProvider();
   registerTools(server, dp);
