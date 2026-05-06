@@ -24,7 +24,16 @@ import { registerTools } from "./tools/index.js";
 function createMcpServer(): McpServer {
   const server = new McpServer(
     { name: "medreconcile-mcp", version: "1.0.0" },
-    { capabilities: { tools: {} } },
+    { 
+      capabilities: { 
+        tools: {},
+        experimental: {
+          "promptOpinion.fhir": {},
+          "promptOpinion": { fhir: true },
+          "fhir": {}
+        }
+      } 
+    },
   );
   const dp = new DataProvider();
   registerTools(server, dp);
