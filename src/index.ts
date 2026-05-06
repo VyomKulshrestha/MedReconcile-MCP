@@ -28,7 +28,10 @@ function createMcpServer(): McpServer {
       capabilities: { 
         tools: {},
         experimental: {
-          "ai.promptopinion/fhir-context": {}
+          "ai.promptopinion/fhir-context": { supported: true },
+          "promptOpinion": { fhir: true },
+          "fhir_context_required": true,
+          "fhir": {}
         }
       } 
     },
